@@ -19,7 +19,10 @@ public class Product
     public int Id { get; set; }
 
     [Required]
-    public required string Name { get; set; }
+    public string Name { get; set; }
+
+    [Required]
+    public int Price { get; set; }  
 }
 
 public class Stash
@@ -38,7 +41,7 @@ public class Stash
     public decimal BuyPrice { get; set; }
 }
 
-public class TransactionHistory
+/*public class TransactionHistory
 {
     [Key]
     public int Id { get; set; }
@@ -48,3 +51,4 @@ public class TransactionHistory
     public double BalanceAfterTransaction { get; set; }
     public DateTime TimeOfTransaction { get; set; }
 }
+*/

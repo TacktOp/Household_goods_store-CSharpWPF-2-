@@ -27,7 +27,7 @@ namespace Praktika
                 context.Database.EnsureCreated();
                 if (!context.Users.Any())
                 {
-                    ApplicationTestScenarios.GenerateRandomData.RunAsync();
+                    ApplicationTestScenarios.GenerateRandomData.Run();
                 }
                 FillDataGrid(context);
             }
@@ -98,11 +98,11 @@ namespace Praktika
             var result = ChangeAddValue(id, row, columnName, newValue);
             if (result)
             {
-                MessageBox.Show("Row changed successfully!");
+                MessageBox.Show("Строка успешно изменена!");
             }
             else
             {
-                MessageBox.Show("Can't change this row!");
+                MessageBox.Show("Невозможно изменить эту строку!");
             }
         }
 
@@ -114,7 +114,7 @@ namespace Praktika
                 {
                     switch (currentTable)
                     {
-                        case "Users":
+                        /*case "Users":
                             var user = context.Users.Find(id);
                             if (user == null)
                             {
@@ -141,7 +141,7 @@ namespace Praktika
                                 }
                             }
                             context.SaveChanges();
-                            break;
+                            break;*/
                         case "Products":
                             var product = context.Products.Find(id);
                             if (product == null)
@@ -205,7 +205,7 @@ namespace Praktika
                             }
                             context.SaveChanges();
                             break;
-                        case "TransactionHistories":
+                        /*case "TransactionHistories":
                             var transactionHistory = context.TransactionHistories.Find(id);
                             if (transactionHistory == null)
                             {
@@ -236,7 +236,7 @@ namespace Praktika
                                 }
                             }
                             context.SaveChanges();
-                            break;
+                            break;*/
                     }
                     return true;
                 }
@@ -267,7 +267,7 @@ namespace Praktika
                 context.Database.EnsureCreated();
                 if (!context.Users.Any())
                 {
-                    ApplicationTestScenarios.GenerateRandomData.RunAsync();
+                    ApplicationTestScenarios.GenerateRandomData.Run();
                 }
                 FillDataGrid(context);
             }
@@ -275,7 +275,7 @@ namespace Praktika
             loggedInUserTextBlock.Visibility = Visibility.Visible;
             logoutButton.Visibility = Visibility.Visible;
 
-            loggedInUserTextBlock.Text = $"Logged in as {user.Login}";
+            loggedInUserTextBlock.Text = $"Вошёл как\n{user.Login}";
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
@@ -300,10 +300,10 @@ namespace Praktika
                     {
                         switch (currentTable)
                         {
-                            case "Users":
+                            /*case "Users":
                                 var user = context.Users.Find(rowId);
                                 context.Users.Remove(user);
-                                break;
+                                break;*/
                             case "Products":
                                 var product = context.Products.Find(rowId);
                                 context.Products.Remove(product);
@@ -312,10 +312,10 @@ namespace Praktika
                                 var stash = context.Stashes.Find(rowId);
                                 context.Stashes.Remove(stash);
                                 break;
-                            case "TransactionHistories":
+                            /*case "TransactionHistories":
                                 var transactionHistory = context.TransactionHistories.Find(rowId);
                                 context.TransactionHistories.Remove(transactionHistory);
-                                break;
+                                break;*/
                         }
                         context.SaveChanges();
                         return true;
@@ -337,11 +337,11 @@ namespace Praktika
             var result = DeleteRow(rowId);
             if (result)
             {
-                MessageBox.Show("Row deleted successfully!");
+                MessageBox.Show("Строка успешно изменена!");
             }
             else
             {
-                MessageBox.Show("Can't delete this row!");
+                MessageBox.Show("Невозможно изменить эту строку!");
             }
         }
 
@@ -357,7 +357,7 @@ namespace Praktika
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
                 lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
-                lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
+                //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
             // Тест добавления, которое должно пройти (User)
@@ -457,7 +457,7 @@ namespace Praktika
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
                 lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
-                lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
+                //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
             // Тест удаления, которое должно пройти (User)
@@ -515,7 +515,7 @@ namespace Praktika
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
                 lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
-                lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
+                //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
             // Тест добавления, которое не должно пройти (User)

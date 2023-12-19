@@ -20,6 +20,7 @@ namespace ApplicationScenarios
         {
             public string Id { get; set; }
             public string Name { get; set; }
+            public string Price { get; set; }
         }
         private class dataFormatStash
         {
@@ -28,13 +29,13 @@ namespace ApplicationScenarios
             public string TimeLastCheck { get; set; }
             public string BuyPrice { get; set; }
         }
-        private class dataFormatTransactionHistory
+        /*private class dataFormatTransactionHistory
         {
             public string Id { get; set; }
             public string SpendMoney { get; set; }
             public string BalanceAfterTransaction { get; set; }
             public string TimeOfTransaction { get; set; }
-        }
+        }*/
         private List<dataFormatUser> GetUsers()
         {
             var users = _context.Users.ToList();
@@ -59,7 +60,8 @@ namespace ApplicationScenarios
                 data.Add(new dataFormatProduct
                 {
                     Id = product.Id.ToString(),
-                    Name = product.Name
+                    Name = product.Name,
+                    Price = product.Price.ToString(),
                 });
             }
             return data;
@@ -80,7 +82,7 @@ namespace ApplicationScenarios
             }
             return data;
         }
-        private List<dataFormatTransactionHistory> GetTransactionHistories()
+        /*private List<dataFormatTransactionHistory> GetTransactionHistories()
         {
             var transactionHistories = _context.TransactionHistories.ToList();
             var data = new List<dataFormatTransactionHistory>();
@@ -95,7 +97,7 @@ namespace ApplicationScenarios
                 });
             }
             return data;
-        }
+        }*/
 
         public Dictionary<string, List<object>> GetAllData()
         {
@@ -104,7 +106,7 @@ namespace ApplicationScenarios
                 { "Users", GetUsers().Cast<object>().ToList() },
                 { "Products", GetProducts().Cast<object>().ToList() },
                 { "Stashes", GetStashes().Cast<object>().ToList() },
-                { "TransactionHistories", GetTransactionHistories().Cast<object>().ToList() }
+                //{ "TransactionHistories", GetTransactionHistories().Cast<object>().ToList() }
             };
             return data;
         }
