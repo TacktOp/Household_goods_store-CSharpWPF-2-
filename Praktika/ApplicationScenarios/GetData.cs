@@ -22,20 +22,11 @@ namespace ApplicationScenarios
             public string Name { get; set; }
             public string Price { get; set; }
         }
-        private class dataFormatStash
+        private class dataFormatShop
         {
             public string Id { get; set; }
-            public string ProductId { get; set; }
-            public string TimeLastCheck { get; set; }
-            public string BuyPrice { get; set; }
+            public string Addres { get; set; }
         }
-        /*private class dataFormatTransactionHistory
-        {
-            public string Id { get; set; }
-            public string SpendMoney { get; set; }
-            public string BalanceAfterTransaction { get; set; }
-            public string TimeOfTransaction { get; set; }
-        }*/
         private List<dataFormatUser> GetUsers()
         {
             var users = _context.Users.ToList();
@@ -66,38 +57,20 @@ namespace ApplicationScenarios
             }
             return data;
         }
-        private List<dataFormatStash> GetStashes()
+        private List<dataFormatShop> GetShops()
         {
-            var stashes = _context.Stashes.ToList();
-            var data = new List<dataFormatStash>();
-            foreach (var stash in stashes)
+            var shops = _context.Shops.ToList();
+            var data = new List<dataFormatShop>();
+            foreach (var shop in shops)
             {
-                data.Add(new dataFormatStash
+                data.Add(new dataFormatShop
                 {
-                    Id = stash.Id.ToString(),
-                    ProductId = stash.ProductId.ToString(),
-                    TimeLastCheck = stash.TimeLastCheck.ToString(),
-                    BuyPrice = stash.BuyPrice.ToString()
+                    Id = shop.Id.ToString(),
+                    Addres = shop.Addres,
                 });
             }
             return data;
         }
-        /*private List<dataFormatTransactionHistory> GetTransactionHistories()
-        {
-            var transactionHistories = _context.TransactionHistories.ToList();
-            var data = new List<dataFormatTransactionHistory>();
-            foreach (var transactionHistory in transactionHistories)
-            {
-                data.Add(new dataFormatTransactionHistory
-                {
-                    Id = transactionHistory.Id.ToString(),
-                    SpendMoney = transactionHistory.SpendMoney.ToString(),
-                    BalanceAfterTransaction = transactionHistory.BalanceAfterTransaction.ToString(),
-                    TimeOfTransaction = transactionHistory.TimeOfTransaction.ToString()
-                });
-            }
-            return data;
-        }*/
 
         public Dictionary<string, List<object>> GetAllData()
         {
@@ -105,8 +78,7 @@ namespace ApplicationScenarios
             {
                 { "Users", GetUsers().Cast<object>().ToList() },
                 { "Products", GetProducts().Cast<object>().ToList() },
-                { "Stashes", GetStashes().Cast<object>().ToList() },
-                //{ "TransactionHistories", GetTransactionHistories().Cast<object>().ToList() }
+                { "Shops", GetShops().Cast<object>().ToList() },
             };
             return data;
         }

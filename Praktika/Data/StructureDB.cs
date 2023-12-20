@@ -25,30 +25,11 @@ public class Product
     public int Price { get; set; }  
 }
 
-public class Stash
+public class Shop
 {
     [Key]
     public int Id { get; set; }
 
     [Required]
-    public int ProductId { get; set; }
-    public required Product Product { get; set; }
-
-    [Required]
-    public DateTime TimeLastCheck { get; set; }
-
-    [Required]
-    public decimal BuyPrice { get; set; }
+    public string Addres { get; set; }
 }
-
-/*public class TransactionHistory
-{
-    [Key]
-    public int Id { get; set; }
-
-    [Required]
-    public double SpendMoney { get; set; }
-    public double BalanceAfterTransaction { get; set; }
-    public DateTime TimeOfTransaction { get; set; }
-}
-*/

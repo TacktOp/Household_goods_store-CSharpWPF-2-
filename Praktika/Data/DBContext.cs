@@ -5,8 +5,7 @@ public class PDbContextData : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
-    public DbSet<Stash> Stashes { get; set; }
-    //public DbSet<TransactionHistory> TransactionHistories { get; set; }
+    public DbSet<Shop> Shops { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().HasKey(u => u.Id);

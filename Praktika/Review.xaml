@@ -1,0 +1,26 @@
+﻿<Window x:Class="Praktika.Review"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Praktika"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Review" Height="450" Width="800" Background="#FFB2F9DE" FontFamily="Ink Free">
+    <Grid>
+        <Image Margin="400,10,0,159" Source="/D185D0BED0B72.png" Stretch="Fill" HorizontalAlignment="Left" Width="390"/>
+        <Image Margin="10,10,0,159" Source="/hoztovary-1200x500.png" Stretch="Fill" HorizontalAlignment="Left" Width="385"/>
+        <TextBox materialDesign:HintAssist.Hint="Введите логин" Grid.Row="1" Margin="5" x:Name="name_textBox" FontSize="24" Style="{StaticResource MaterialDesignTextBox}" FontFamily="Ink Free" HorizontalAlignment="Center"/>
+        <Button x:Name="review" Content="Отправить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Visibility="Visible" Background="Black" Foreground="White" Click="review_Click"/>
+        <RichTextBox x:Name="review_richTextBox" Margin="178,298,10,10" FontSize="18">
+            <FlowDocument>
+                <Paragraph>
+                    <Run x:Name="review_richTextBox_run" Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <TextBox x:Name="name_textBox1" materialDesign:HintAssist.Hint="Введите имя" HorizontalAlignment="Left" Margin="10,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="24"/>
+
+    </Grid>
+</Window>

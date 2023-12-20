@@ -114,7 +114,7 @@ namespace Praktika
                 {
                     switch (currentTable)
                     {
-                        /*case "Users":
+                        case "Users":
                             var user = context.Users.Find(id);
                             if (user == null)
                             {
@@ -141,7 +141,7 @@ namespace Praktika
                                 }
                             }
                             context.SaveChanges();
-                            break;*/
+                            break;
                         case "Products":
                             var product = context.Products.Find(id);
                             if (product == null)
@@ -166,9 +166,9 @@ namespace Praktika
                             }
                             context.SaveChanges();
                             break;
-                        case "Stashes":
-                            var stash = context.Stashes.Find(id);
-                            if (stash == null)
+                        case "Shops":
+                            var shop = context.Shops.Find(id);
+                            if (shop == null)
                             {
                                 try
                                 {
@@ -176,11 +176,9 @@ namespace Praktika
                                     {
                                         return false;
                                     }
-                                    context.Add(new Stash
+                                    context.Add(new Shop
                                     {
-                                        Product = context.Products.Find(int.Parse(row[1].ToString())),
-                                        TimeLastCheck = DateTime.Parse(row[2].ToString()),
-                                        BuyPrice = (decimal)double.Parse(row[3].ToString())
+                                        Addres = row[1].ToString(),
                                     });
                                 }
                                 catch (System.Exception)
@@ -193,50 +191,12 @@ namespace Praktika
                                 switch (columnName)
                                 {
                                     case "ProductId":
-                                        stash.Product = context.Products.Find(int.Parse(newValue));
-                                        break;
-                                    case "TimeLastCheck":
-                                        stash.TimeLastCheck = DateTime.Parse(newValue);
-                                        break;
-                                    case "BuyPrice":
-                                        stash.BuyPrice = (decimal)double.Parse(newValue);
+                                        shop.Addres = newValue;
                                         break;
                                 }
                             }
                             context.SaveChanges();
                             break;
-                        /*case "TransactionHistories":
-                            var transactionHistory = context.TransactionHistories.Find(id);
-                            if (transactionHistory == null)
-                            {
-                                if (row[1] == null)
-                                {
-                                    return false;
-                                }
-                                context.Add(new TransactionHistory
-                                {
-                                    SpendMoney = double.Parse(row[1].ToString()),
-                                    BalanceAfterTransaction = double.Parse(row[2].ToString()),
-                                    TimeOfTransaction = DateTime.Parse(row[3].ToString())
-                                });
-                            }
-                            else
-                            {
-                                switch (columnName)
-                                {
-                                    case "SpendMoney":
-                                        transactionHistory.SpendMoney = double.Parse(newValue);
-                                        break;
-                                    case "BalanceAfterTransaction":
-                                        transactionHistory.BalanceAfterTransaction = double.Parse(newValue);
-                                        break;
-                                    case "TimeOfTransaction":
-                                        transactionHistory.TimeOfTransaction = DateTime.Parse(newValue);
-                                        break;
-                                }
-                            }
-                            context.SaveChanges();
-                            break;*/
                     }
                     return true;
                 }
@@ -309,8 +269,8 @@ namespace Praktika
                                 context.Products.Remove(product);
                                 break;
                             case "Stashes":
-                                var stash = context.Stashes.Find(rowId);
-                                context.Stashes.Remove(stash);
+                                var stash = context.Shops.Find(rowId);
+                                context.Shops.Remove(stash);
                                 break;
                             /*case "TransactionHistories":
                                 var transactionHistory = context.TransactionHistories.Find(rowId);
@@ -356,7 +316,7 @@ namespace Praktika
                 context.Database.EnsureCreated();
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
-                lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
+                lastStashId = context.Shops.OrderBy(s => s.Id).Last().Id;
                 //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
@@ -456,7 +416,7 @@ namespace Praktika
                 context.Database.EnsureCreated();
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
-                lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
+                lastStashId = context.Shops.OrderBy(s => s.Id).Last().Id;
                 //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
@@ -514,7 +474,7 @@ namespace Praktika
                 context.Database.EnsureCreated();
                 lastUserId = context.Users.OrderBy(u => u.Id).Last().Id;
                 lastProductId = context.Products.OrderBy(p => p.Id).Last().Id;
-                lastStashId = context.Stashes.OrderBy(s => s.Id).Last().Id;
+                lastStashId = context.Shops.OrderBy(s => s.Id).Last().Id;
                 //lastTransactionHistoryId = context.TransactionHistories.OrderBy(t => t.Id).Last().Id;
             }
             //
@@ -566,6 +526,13 @@ namespace Praktika
             TestChange();
             TestDelete();
             falseTests();
+        }
+
+        private void review_Click(object sender, RoutedEventArgs e)
+        {
+            var review = new Review();
+            review.Show();
+            Close();
         }
     }
 }
