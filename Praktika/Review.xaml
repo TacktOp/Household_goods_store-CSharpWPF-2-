@@ -20,7 +20,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <TextBox x:Name="name_textBox1" materialDesign:HintAssist.Hint="Введите имя" HorizontalAlignment="Left" Margin="10,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="24"/>
+        <TextBox x:Name="name_textBox1" materialDesign:HintAssist.Hint="Введите имя" HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163" FontSize="22"/>
 
     </Grid>
 </Window>
